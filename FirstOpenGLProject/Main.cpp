@@ -7,6 +7,10 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
+
+// Function prototypes
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
 
@@ -29,6 +33,9 @@ int main() {
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
+	// Set the required callback functions
+	glfwSetKeyCallback(window, key_callback);
+
 	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
 	glewExperimental = GL_TRUE;
 	// Initialize GLEW to setup the OpenGL Function pointers
@@ -47,6 +54,12 @@ int main() {
 	while (!glfwWindowShouldClose(window)) {
 		// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
 		glfwPollEvents();
+
+		// Render
+		// Clear the colorbuffer
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 	}
@@ -56,3 +69,10 @@ int main() {
 	return 0;
 }
 
+// Is called whenever a key is pressed/released via GLFW
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	std::cout << key << std::endl;
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, GL_TRUE);
+}
