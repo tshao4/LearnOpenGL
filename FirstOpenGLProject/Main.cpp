@@ -23,9 +23,10 @@ const GLchar* vertexShaderSource = "#version 330 core\n"
 "}\0";
 const GLchar* fragmentShaderSource = "#version 330 core\n"
 "out vec4 color;\n"
+"uniform vec4 ourColor;\n"
 "void main()\n"
 "{\n"
-"color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"color = ourColor;\n"
 "}\n\0";
 
 // The MAIN function, from here we start the application and run the game loop
@@ -136,8 +137,16 @@ int main() {
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// Draw our first triangle
+		// Activate the shader
 		glUseProgram(shaderProgram);
+
+		// Update the uniform color
+		GLfloat timeValue = glfwGetTime();
+		GLfloat greenValue = (sin(timeValue) / 2) + 0.5;
+		GLint vertextColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+		glUniform4f(vertextColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+
+		// Draw the Triangle
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);
