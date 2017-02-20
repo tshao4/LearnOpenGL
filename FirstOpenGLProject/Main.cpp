@@ -8,8 +8,8 @@
 #include <GLFW/glfw3.h>
 
 // GL includes
-#include "Shader.h"
-#include "Camera.h"
+#include "../common/Shader.h"
+#include "../common/Camera.h"
 
 // GLM Mathemtics
 #include <glm/glm.hpp>
@@ -70,7 +70,7 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 
 	// Setup and compile our shaders
-	Shader ourShader("default.vs", "default.frag");
+	Shader ourShader("../shader/default.vs", "../shader/default.frag");
 
 	// Set up our vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] = {

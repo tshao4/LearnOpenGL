@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{88C48F67-C9DF-4D69-863E-00A290CC46C0}</ProjectGuid>
-    <RootNamespace>FirstOpenGLProject</RootNamespace>
+    <ProjectGuid>{4EE74A08-E2B6-448B-B24A-4F4CD30E6494}</ProjectGuid>
+    <RootNamespace>Lighting</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -119,12 +119,14 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\shader\default.frag" />
-    <None Include="..\shader\default.vs" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\common\Camera.h" />
     <ClInclude Include="..\common\Shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\shader\lamp.frag" />
+    <None Include="..\shader\lamp.vs" />
+    <None Include="..\shader\lighting.frag" />
+    <None Include="..\shader\lighting.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
